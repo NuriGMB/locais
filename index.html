@@ -78,12 +78,48 @@
   .btn-gerar-docx:hover { background-color: #15803d; }
   .btn-gerar-docx:active { transform: scale(0.97); }
 
-  @media (max-width: 640px) {
+@media (max-width: 640px) {
     .fg-curso, .fg-cidade, .fg-busca, .fg-status { width: 100%; }
     .tabs { padding: 10px 12px 0; }
-    .conteudo { margin: 0 12px 20px; }
-    .top-bar { padding: 12px; }
-    table { display: block; overflow-x: auto; }
+    
+    /* Remove a borda da caixa principal para os cartões fluírem */
+    .conteudo { margin: 0 12px 20px; border: none; background: transparent; overflow: visible; }
+    .resultado-info { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; }
+    
+    /* Transforma a Tabela em Cartões */
+    table { display: block; border: none; }
+    thead { display: none; } /* Esconde o cabeçalho original */
+    tbody { display: flex; flex-direction: column; gap: 14px; }
+    
+    tr { 
+        display: flex; flex-direction: column;
+        background: #fff; border: 1.5px solid #e2e8f0; 
+        border-radius: 8px; padding: 16px; 
+        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    tr:hover { background: #fff; } /* Tira o efeito de passar o mouse */
+    
+    td { padding: 4px 0; border: none; text-align: left; }
+    
+    /* Estilo do Título (Nome da Empresa) */
+    td:nth-child(1) { border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 8px; }
+    .local-nome { font-size: 15px; }
+    
+    /* Coloca legendas automáticas antes dos textos */
+    td:nth-child(2)::before { content: "CURSO: "; font-weight: 700; font-size: 10px; color: #94a3b8; }
+    td:nth-child(3)::before { content: "CIDADE: "; font-weight: 700; font-size: 10px; color: #94a3b8; }
+    td:nth-child(4)::before { content: "VALIDADE: "; font-weight: 700; font-size: 10px; color: #94a3b8; }
+    
+    /* Etiqueta de Status */
+    td:nth-child(5) { margin-top: 4px; margin-bottom: 8px; }
+    
+    /* Bloco de Contato */
+    td:nth-child(6) { border-top: 1px solid #f1f5f9; padding-top: 12px; margin-top: 4px; }
+    td:nth-child(6)::before { content: "CONTATO:"; font-weight: 700; font-size: 10px; color: #94a3b8; display: block; margin-bottom: 2px; }
+    
+    /* Botão de Emitir (Fica grande no final do cartão) */
+    td:nth-child(7) { padding-top: 8px; }
+    .btn-gerar-docx { width: 100%; justify-content: center; padding: 14px; font-size: 14px; margin-top: 8px; }
   }
 </style>
 </head>
